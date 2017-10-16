@@ -58,18 +58,22 @@ The histogram demonstrates that the data is mostly symmetrical (as there is no o
 
 # 4. Center & Spread
 
-The mean of the data is 14.28, and the standard deviation is 2.99.
-
-```{r}
-mean(ac$AC)
-sd(ac$AC)
+```{r, echo= FALSE}
+mean = mean(ac$AC)
+sd = sd(ac$AC)
 ```
+
+The mean of the data is `r round(mean, 2)`, and the standard deviation is `r round(sd, 2)`.
 
 # 5. Z-Score Computations (Low Number)
 
-Number: 10
+```{r}
+x = 10
+z = (x - mean) / sd
+```
 
-Z-Score: $$Z = \frac{x-\mu}{\delta}\rightarrow\frac{10-14.28}{2.99}\approx-1.43$$
+Z-Score: $$Z = \frac{x-\mu}{\delta}\rightarrow
+\frac{10-`r round(mean, 2)`}{`r round(sd, 2)`}=`r round(z, 2)`$$
 
 Percent Above: $$P(-1.43 < Z) = 0.924 = 92.4\%$$
 
