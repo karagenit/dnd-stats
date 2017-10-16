@@ -53,9 +53,11 @@ qqnorm(ac.stdres,
 qqline(ac.stdres)
 ```
 
-The histogram and boxplot show that the data is symmetrical and unimodal. The NPP shows that the data is mostly normal. 
+The histogram demonstrates that the data is mostly symmetrical (as there is no obvious skew) and is unimodal. The box plot demonstrates the data's symmetry through how evenly each of the data points (fences, quartiles) are placed. The NPP shows that the data is mostly normal, as all of the data points are clustered near the linear model line. 
 
 # 4. Center & Spread
+
+The mean of the data is 14.28, and the standard deviation is 2.99.
 
 ```{r}
 mean(ac$AC)
@@ -135,9 +137,28 @@ axis(1, at=seq(5, 25, 5), pos=0)
 
 # 7. 20th Percentile
 
-$$P(Z < k) = 0.2$$
-$$k = -0.84$$
+$$P(Z < z) = 0.2$$
+$$z = -0.84$$
+$$x = z * \delta + \mu$$
+$$x = 11.8$$
+```{r}
+qnorm(0.2) * sd(ac$AC) + mean(ac$AC)
+```
+
+# 8. Empirical Probabilities
+
+The empirical percentage of data points above 10 is 97%. The empirical percentage of data points between 10 and 12 is 28%. The empirical 20th percentile data point is 12. 
 
 ```{r}
-qnorm(0.2)
+mean = mean(ac$AC)
+sd = sd(ac$AC)
+count = length(ac$AC)
+sum(ac >= 10) / count
+sum(ac >= 10 & ac <= 12) / count
+x = sort(ac$AC)[[count * 0.2]]
+z = (x - mean) / sd
+print(z)
 ```
+
+
+
