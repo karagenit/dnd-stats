@@ -43,14 +43,20 @@ hist(ac$AC,
 ```{r, fig.align='center', echo=FALSE}
 boxplot(ac$AC,
         main="Boxplot of Armor Classes",
+        xlab="",
+        ylab="Monster Manual ACs",
         horizontal = TRUE)
 ```
 
-```{r, echo=FALSE}
+&nbsp;
+
+```{r, fig.align='center', echo=FALSE}
 ac.lm = lm(ac$AC ~ 1,
            data=ac)
 ac.stdres = rstandard(ac.lm)
 qqnorm(ac.stdres,
+       xlab="Theoretical Quantiles (Z-Scores)",
+       ylab="Empirical Quantiles (Residuals)",
        cex=1)
 qqline(ac.stdres)
 ```
@@ -77,6 +83,8 @@ x = 10
 z = (x - mean) / sd
 percent = pnorm(z, lower.tail = FALSE)
 ```
+
+Numer: $$x = `r x`$$
 
 Z-Score: $$Z = \frac{x-\mu}{\delta}\rightarrow
 \frac{10-`r round(mean, 2)`}{`r round(sd, 2)`}=`r round(z, 2)`$$
