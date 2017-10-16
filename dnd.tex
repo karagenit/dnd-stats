@@ -1,0 +1,134 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{longtable}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[parfill]{parskip}
+
+\title{AP Statistics Chapter 5 Assignment \\
+		\large Dungeons \& Dragons (5th Edition) Monster Armor Classes}
+\author{Caleb Smith}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\textit{Dungeons \& Dragons} is a popular role-playing tabletop game, within which players are often pitted in combat against a variety of monsters. The 5th Edition \textit{Monster Manual} is the definitive guidebook to the monsters found in the game (it is officially published by the creators of D\&D), and contains 761 such creatures. Each monster has a number of game statistics - one such is the creature's \textit{Armor Class}, which determines how difficult it is for a player to deal damage to the monster. In this report, I've gathered and analyzed the Armor Classes of each creature in the Monster Manual. 
+\end{abstract}
+
+\section{Dataset}
+
+Below is the data set for each of the monsters in the \textit{Monster Manual} - values are listed in alphabetical order by the monster's name.
+
+\begin{longtable}{ c c c c c c c c c c c c c c c c }
+    15 & 17 & 18 & 15 & 14 & 13 & 12 & 15 & 15 & 14 & 11 & 20 & 12 & 10 & 15 & 12 \\
+	15 & 13 & 15 & 16 & 14 & 8 & 5 & 13 & 17 & 13 & 12 & 15 & 12 & 11 & 14 & 16 \\
+	13 & 12 & 13 & 13 & 11 & 17 & 15 & 14 & 16 & 13 & 13 & 13 & 12 & 13 & 12 & 11 \\
+	13 & 15 & 17 & 14 & 13 & 11 & 13 & 15 & 16 & 16 & 17 & 15 & 18 & 12 & 13 & 11 \\
+	12 & 13 & 17 & 17 & 14 & 18 & 15 & 17 & 16 & 14 & 10 & 13 & 18 & 19 & 12 & 11 \\
+	11 & 11 & 12 & 18 & 12 & 13 & 18 & 12 & 10 & 12 & 13 & 12 & 12 & 11 & 16 & 22 \\
+	10 & 13 & 19 & 6 & 14 & 14 & 12 & 11 & 17 & 16 & 11 & 11 & 13 & 14 & 17 & 14 \\
+	14 & 9 & 17 & 13 & 15 & 15 & 12 & 20 & 12 & 14 & 12 & 22 & 14 & 13 & 15 & 10 \\
+	13 & 15 & 10 & 14 & 13 & 15 & 12 & 17 & 14 & 14 & 17 & 18 & 10 & 11 & 16 & 15 \\
+	17 & 13 & 13 & 14 & 16 & 11 & 16 & 14 & 20 & 12 & 18 & 12 & 15 & 14 & 17 & 10 \\
+	12 & 19 & 10 & 15 & 14 & 9 & 18 & 15 & 12 & 10 & 13 & 13 & 12 & 12 & 11 & 7 \\
+	18 & 13 & 15 & 16 & 12 & 16 & 25 & 13 & 19 & 22 & 19 & 15 & 12 & 15 & 12 & 19 \\
+	15 & 15 & 12 & 16 & 9 & 8 & 15 & 16 & 12 & 14 & 19 & 12 & 18 & 14 & 18 & 17 \\
+	17 & 16 & 16 & 16 & 10 & 14 & 12 & 11 & 13 & 19 & 14 & 10 & 12 & 18 & 13 & 15 \\
+	11 & 20 & 11 & 12 & 17 & 13 & 15 & 14 & 17 & 17 & 18 & 14 & 12 & 10 & 12 & 12 \\
+	14 & 12 & 19 & 17 & 12 & 12 & 14 & 12 & 16 & 17 & 15 & 13 & 14 & 5 & 18 & 18 \\
+	18 & 17 & 15 & 22 & 13 & 16 & 16 & 10 & 17 & 12 & 18 & 11 & 12 & 15 & 13 & 14 \\
+	17 & 17 & 10 & 10 & 12 & 13 & 13 & 11 & 15 & 13 & 12 & 19 & 19 & 13 & 10 & 18 \\
+	16 & 19 & 21 & 14 & 22 & 14 & 10 & 19 & 14 & 10 & 18 & 17 & 17 & 14 & 12 & 17 \\
+	10 & 12 & 13 & 13 & 13 & 15 & 16 & 13 & 12 & 17 & 22 & 11 & 16 & 13 & 19 & 12 \\
+	12 & 14 & 12 & 12 & 12 & 13 & 15 & 12 & 14 & 15 & 15 & 9 & 15 & 15 & 14 & 17 \\
+	18 & 15 & 15 & 15 & 10 & 15 & 18 & 16 & 17 & 17 & 19 & 10 & 12 & 15 & 11 & 12 \\
+	21 & 15 & 12 & 15 & 14 & 10 & 17 & 15 & 12 & 15 & 12 & 13 & 13 & 15 & 12 & 16 \\
+	16 & 13 & 13 & 19 & 13 & 8 & 8 & 15 & 17 & 13 & 18 & 17 & 15 & 20 & 12 & 16 \\
+	15 & 18 & 17 & 14 & 11 & 22 & 13 & 12 & 13 & 20 & 15 & 13 & 12 & 16 & 11 & 16 \\
+	18 & 7 & 13 & 18 & 12 & 15 & 15 & 14 & 20 & 17 & 14 & 15 & 15 & 11 & 17 & 18 \\
+	9 & 14 & 12 & 14 & 12 & 15 & 10 & 18 & 14 & 15 & 15 & 15 & 25 & 16 & 13 & 15 \\
+	15 & 11 & 17 & 12 & 13 & 16 & 15 & 13 & 16 & 13 & 13 & 13 & 15 & 15 & 12 & 12 \\
+	12 & 14 & 13 & 12 & 10 & 12 & 15 & 12 & 13 & 22 & 13 & 18 & 16 & 11 & 13 & 9 \\
+	15 & 13 & 16 & 10 & 12 & 12 & 15 & 11 & 12 & 13 & 13 & 20 & 20 & 12 & 18 & 15 \\
+	12 & 12 & 18 & 11 & 14 & 15 & 16 & 15 & 16 & 12 & 12 & 11 & 16 & 8 & 11 & 14 \\
+	12 & 13 & 11 & 12 & 12 & 16 & 14 & 13 & 18 & 12 & 13 & 16 & 12 & 12 & 11 & 10 \\
+	19 & 18 & 11 & 12 & 12 & 18 & 14 & 17 & 16 & 13 & 18 & 15 & 13 & 11 & 17 & 18 \\
+	10 & 19 & 16 & 16 & 17 & 16 & 14 & 13 & 12 & 11 & 18 & 17 & 15 & 10 & 18 & 17 \\
+	20 & 17 & 12 & 17 & 15 & 15 & 14 & 16 & 14 & 12 & 15 & 12 & 13 & 15 & 12 & 13 \\
+	11 & 19 & 13 & 17 & 11 & 16 & 15 & 14 & 19 & 13 & 12 & 19 & 18 & 12 & 11 & 15 \\
+	11 & 18 & 14 & 10 & 12 & 21 & 10 & 18 & 14 & 18 & 13 & 16 & 16 & 13 & 18 & 15 \\
+	13 & 17 & 17 & 8 & 18 & 14 & 15 & 13 & 11 & 20 & 15 & 22 & 11 & 13 & 12 & 13 \\
+	18 & 20 & 19 & 13 & 17 & 11 & 13 & 22 & 12 & 15 & 13 & 14 & 18 & 14 & 14 & 15 \\
+	12 & 14 & 11 & 18 & 12 & 14 & 13 & 22 & 15 & 11 & 18 & 12 & 5 & 12 & 15 & 15 \\
+	16 & 17 & 13 & 11 & 15 & 13 & 5 & 13 & 14 & 17 & 10 & 14 & 13 & 14 & 10 & 15 \\
+	12 & 13 & 14 & 16 & 14 & 18 & 18 & 17 & 18 & 16 & 15 & 13 & 18 & 12 & 13 & 18 \\
+	20 & 16 & 13 & 15 & 12 & 16 & 15 & 12 & 16 & 14 & 11 & 15 & 19 & 12 & 18 & 16 \\
+	12 & 15 & 22 & 12 & 18 & 11 & 10 & 14 & 15 & 17 & 12 & 13 & 21 & 11 & 14 & 12 \\
+	12 & 17 & 13 & 15 & 18 & 16 & 16 & 15 & 10 & 17 & 12 & 15 & 15 & 14 & 14 & 5 \\
+	15 & 14 & 13 & 12 & 17 & 15 & 13 & 15 & 15 & 18 & 15 & 18 & 12 & 18 & 12 & 13 \\
+	16 & 12 & 18 & 17 & 18 & 12 & 19 & 13 & 12 & 15 & 11 & 18 & 13 & 10 & 18 & 21 \\
+	14 & 13 & 16 & 16 & 10 & 18 & 8 & 9 & 12 \\
+\end{longtable}
+
+\section{Data Source}
+
+Original data pages can be found \href{https://github.com/karagenit/bestiary/tree/master/_posts}{here}. Pages were parsed for data with \href{https://github.com/karagenit/dnd-ac/blob/master/script.rb}{this script}. Results of the script can be found \href{https://docs.google.com/spreadsheets/d/1GczVGTTNPxHVgNRFSQclzjwKyO30wLdCg6uDStq-raQ/edit?usp=sharing}{here}, which was split with \href{https://github.com/karagenit/csv-split/blob/master/script.rb}{this script} and then tabulated for LaTeX with \href{https://github.com/karagenit/csv-latex-table/blob/master/script.sh}{this script}.
+
+\section{Data Distribution \& Normality}
+
+\todo[inline]{Insert Histogram Graph}
+\todo[inline]{Insert Box Plot Graph}
+\todo[inline]{Insert NPP Graph}
+
+The histogram and boxplot show that the data is symmetrical and unimodal. The NPP shows that the data is mostly normal. 
+
+\section{Center \& Spread}
+
+The population mean of the dataset is $\mu = 14.28$, and the population standard deviation is $\delta = 2.99$. 
+
+\section{Z-Score Computations (Low Number)}
+
+\todo[inline]{Insert Normal Curve Graph}
+
+Number: 10
+
+Z-Score: $Z = \frac{x-\mu}{\delta}\rightarrow\frac{10-14.28}{2.99}\approx-1.43$
+
+Percent Above: $P(-1.43 < Z) = 0.924 = 92.4\%$
+
+\section{Z-Score Computations (High Number)}
+
+\todo[inline]{Insert Normal Curve Graph}
+
+Number: 12
+
+Z-Score: $Z = \frac{x-\mu}{\delta}\rightarrow\frac{12-14.28}{2.99}\approx-0.76$
+
+Percent Between 10 \& 12: \\
+$P(-1.43 < Z < -0.76) = P(Z < -0.76) - P(Z < -1.43) =  0.224 - 0.076 = 0.148 = 14.8\%$
+
+\section{20th \%ile}
+
+$P(Z < k) = 0.2 \\
+k = -0.84$
+
+\section{Empirical Probabilities}
+
+
+
+\bibliographystyle{alpha}
+\bibliography{sample}
+
+\end{document}
