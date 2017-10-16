@@ -114,4 +114,20 @@ print(zx)
 zy = (y - mean) / sd
 print(zy)
 pnorm(zy) - pnorm(zx)
+
+normseq <- seq(5, 25, length = 100)
+norm <- dnorm(normseq, mean, sd)
+
+plot(normseq, norm, type="n", xlab="Armor Classes", ylab="",
+  main="Normal Distribution", axes=FALSE)
+
+i <- normseq >= x & normseq <= y
+lines(normseq, norm)
+polygon(c(x,normseq[i],y), c(0,norm[i],0), col="red")
+
+area <- pnorm(y, mean, sd) - pnorm(x, mean, sd)
+result <- paste("P(",x,"< AC <",y,") =",
+   signif(area, digits=3))
+mtext(result,3)
+axis(1, at=seq(5, 25, 5), pos=0)
 ```
