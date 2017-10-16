@@ -14,9 +14,9 @@ urlcolor: blue
 
 Below is the data set for each of the monsters in the \textit{Monster Manual} - values are listed in alphabetical order by the monster's name.
 
-```{r}
+```{r, echo=FALSE}
 ac <- read.csv("data.csv", header=TRUE)
-ac$AC
+print(ac$AC, max = 999, row.names=FALSE)
 ```
 
 # 2. Data Source
@@ -31,7 +31,7 @@ Originally I had to split the data with [this script](https://github.com/karagen
 
 # 3. Data Distribution & Normality
 
-```{r}
+```{r, echo=FALSE}
 hist(ac$AC,
      main = "Histogram of Armor Classes",
      xlab = "Armor Class",
@@ -39,14 +39,15 @@ hist(ac$AC,
      breaks = 20)
 ```
 
-```{r, fig.align='center'}
+```{r, fig.align='center', echo=FALSE}
 boxplot(ac$AC,
         main="Boxplot of Armor Classes",
         horizontal = TRUE)
 ```
 
-```{r}
-ac.lm = lm(ac$AC ~ 1, data=ac)
+```{r, echo=FALSE}
+ac.lm = lm(ac$AC ~ 1,
+           data=ac)
 ac.stdres = rstandard(ac.lm)
 qqnorm(ac.stdres,
        cex=1)
