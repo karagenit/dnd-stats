@@ -39,12 +39,18 @@ hist(ac$AC,
      breaks = 20)
 ```
 
-```{r}
+```{r, fig.align='center'}
 boxplot(ac$AC,
         main="Boxplot of Armor Classes",
         horizontal = TRUE)
 ```
 
+```{r}
+ac.lm = lm(ac$AC ~ 1, data=ac)
+ac.stdres = rstandard(ac.lm)
+qqnorm(ac.stdres)
+qqline(ac.stdres)
+```
 
 
 
