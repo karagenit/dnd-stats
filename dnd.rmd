@@ -1,13 +1,29 @@
 ---
-title: Test
+title: D&D Armor Classes
 author: Caleb Smith
 output: pdf_document
+urlcolor: blue
 ---
 
-# Header
+# About
 
-Hello!
+*Dungeons & Dragons* is a popular role-playing tabletop game, within which players are often pitted in combat against a variety of monsters. The 5th Edition *Monster Manual* is the definitive guidebook to the monsters found in the game (it is officially published by the creators of D&D), and contains 761 such creatures. Each monster has a number of game statistics - one such is the creature's *Armor Class*, which determines how difficult it is for a player to deal damage to the monster. In this report, I've gathered and analyzed the Armor Classes of each creature in the Monster Manual. 
+
+# 1. Dataset
+
+Below is the data set for each of the monsters in the \textit{Monster Manual} - values are listed in alphabetical order by the monster's name.
 
 ```{r}
-summary(cars)
+ac <- read.csv("data.csv", header=TRUE)
+ac$AC
 ```
+
+# 2. Data Source
+
+I found the data online in the form of Markdown documents, one per monster, which can be found [here](https://github.com/karagenit/bestiary/tree/master/_posts). Pages were parsed for data with [this script](https://github.com/karagenit/dnd-ac/blob/master/script.rb), which got the data into a basic CSV format (both as a number of counts per AC and as the raw AC values, the latter of which I used for this document). I then used [this script](https://github.com/karagenit/dnd-stats/blob/master/colsplit.sh) to split the columns into rows and manually added the AC header. 
+
+Results of the script can be found [on this Google Doc](https://docs.google.com/spreadsheets/d/1GczVGTTNPxHVgNRFSQclzjwKyO30wLdCg6uDStq-raQ/edit?usp=sharing), or in [this CSV file](https://github.com/karagenit/dnd-stats/blob/master/data.csv).
+
+A little about this document: I was originally planning on using LaTeX with latexpdf to generate a nice PDF report. However, I recently learned about the R statisics language, and decided to format this document with RMarkdown (the source of which can be found [here](https://github.com/karagenit/dnd-stats/blob/master/dnd.rmd)) and build it through RStudio (which uses a combination of pandoc + texlive). 
+
+Originally I had to split the data with [this script](https://github.com/karagenit/csv-split/blob/master/script.rb) and then tabulate it for LaTeX with [this](https://github.com/karagenit/csv-latex-table/blob/master/script.sh), but R makes it easy to import and manipulate the data straight from CSV files.
