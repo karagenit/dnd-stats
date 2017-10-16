@@ -66,9 +66,9 @@ sd(ac$AC)
 
 Number: 10
 
-Z-Score: $Z = \frac{x-\mu}{\delta}\rightarrow\frac{10-14.28}{2.99}\approx-1.43$
+Z-Score: $$Z = \frac{x-\mu}{\delta}\rightarrow\frac{10-14.28}{2.99}\approx-1.43$$
 
-Percent Above: $P(-1.43 < Z) = 0.924 = 92.4\%$
+Percent Above: $$P(-1.43 < Z) = 0.924 = 92.4\%$$
 
 ```{r, fig.align='center'}
 x = 10
@@ -99,10 +99,11 @@ axis(1, at=seq(5, 25, 5), pos=0)
 
 Number: 12
 
-Z-Score: $Z = \frac{x-\mu}{\delta}\rightarrow\frac{12-14.28}{2.99}\approx-0.76$
+Z-Score: $$Z = \frac{x-\mu}{\delta}\rightarrow\frac{12-14.28}{2.99}\approx-0.76$$
 
 Percent Between 10 & 12:  
-$P(-1.43 < Z < -0.76) = P(Z < -0.76) - P(Z < -1.43) =  0.224 - 0.076 = 0.148 = 14.8\%$
+$$P(-1.43 < Z < -0.76) = P(Z < -0.76) - P(Z < -1.43)$$
+$$=  0.224 - 0.076 = 0.148 = 14.8\%$$
 
 ```{r, fig.align='center'}
 x = 10
@@ -130,4 +131,13 @@ result <- paste("P(",x,"< AC <",y,") =",
    signif(area, digits=3))
 mtext(result,3)
 axis(1, at=seq(5, 25, 5), pos=0)
+```
+
+# 7. 20th Percentile
+
+$$P(Z < k) = 0.2$$
+$$k = -0.84$$
+
+```{r}
+qnorm(0.2)
 ```
