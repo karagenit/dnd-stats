@@ -70,4 +70,13 @@ Z-Score: $$Z = \frac{x-\mu}{\delta}\rightarrow\frac{10-14.28}{2.99}\approx-1.43$
 
 Percent Above: $$P(-1.43 < Z) = 0.924 = 92.4\%$$
 
+```{r}
+x = 10
+mean = mean(ac$AC)
+sd = sd(ac$AC)
+z = (x - mean) / sd
+print(z)
+pnorm(z, lower.tail = FALSE)
 
+
+```
