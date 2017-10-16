@@ -1,5 +1,6 @@
 ---
-title: D&D Armor Classes
+title: AP Statistics Chapter 5 Assignment
+subtitle: Dungeons & Dragons (5th Edition) Monster Armor Classes
 author: Caleb Smith
 output: pdf_document
 urlcolor: blue
@@ -27,3 +28,13 @@ Results of the script can be found [on this Google Doc](https://docs.google.com/
 A little about this document: I was originally planning on using LaTeX with latexpdf to generate a nice PDF report. However, I recently learned about the R statisics language, and decided to format this document with RMarkdown (the source of which can be found [here](https://github.com/karagenit/dnd-stats/blob/master/dnd.rmd)) and build it through RStudio (which uses a combination of pandoc + texlive). 
 
 Originally I had to split the data with [this script](https://github.com/karagenit/csv-split/blob/master/script.rb) and then tabulate it for LaTeX with [this](https://github.com/karagenit/csv-latex-table/blob/master/script.sh), but R makes it easy to import and manipulate the data straight from CSV files.
+
+# 3. Data Distribution & Normality
+
+```{r}
+hist(ac$AC,
+     main="Histogram of Armor Classes",
+     xlab="Armor Class",
+     xlim=c(5,25),
+     breaks=20)
+```
