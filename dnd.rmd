@@ -72,11 +72,26 @@ Percent Above: $$P(-1.43 < Z) = 0.924 = 92.4\%$$
 
 ```{r}
 x = 10
+lb = 10
+ub = 1000
 mean = mean(ac$AC)
 sd = sd(ac$AC)
 z = (x - mean) / sd
 print(z)
 pnorm(z, lower.tail = FALSE)
 
+normseq <- seq(-4, 4, length = 100) * sd + mean
+norm <- dnorm(normseq, mean, sd)
 
+plot(normseq, norm, type="n")
+
+i <- normseq >= lb & normseq <= ub
+lines(normseq, norm)
+polygon(c(lb,normseq[i],ub), c(0,norm[i],0), col="red")
+
+area <- pnorm(ub, mean, sd) - pnorm(lb, mean, sd)
+result <- paste("P(",lb,"< IQ <",ub,") =",
+   signif(area, digits=3))
+mtext(result,3)
+axis(1, at=seq(40, 160, 20), pos=0)
 ```
