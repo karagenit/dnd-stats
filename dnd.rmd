@@ -70,28 +70,27 @@ Z-Score: $$Z = \frac{x-\mu}{\delta}\rightarrow\frac{10-14.28}{2.99}\approx-1.43$
 
 Percent Above: $$P(-1.43 < Z) = 0.924 = 92.4\%$$
 
-```{r}
+```{r, fig.align='center'}
 x = 10
-lb = 10
-ub = 1000
 mean = mean(ac$AC)
 sd = sd(ac$AC)
 z = (x - mean) / sd
 print(z)
 pnorm(z, lower.tail = FALSE)
 
-normseq <- seq(-4, 4, length = 100) * sd + mean
+normseq <- seq(5, 25, length = 100)
 norm <- dnorm(normseq, mean, sd)
 
-plot(normseq, norm, type="n")
+plot(normseq, norm, type="n", xlab="IQ Values", ylab="",
+  main="Normal Distribution", axes=FALSE)
 
-i <- normseq >= lb & normseq <= ub
+i <- normseq >= x
 lines(normseq, norm)
-polygon(c(lb,normseq[i],ub), c(0,norm[i],0), col="red")
+polygon(c(x,normseq[i],999), c(0,norm[i],0), col="red")
 
-area <- pnorm(ub, mean, sd) - pnorm(lb, mean, sd)
-result <- paste("P(",lb,"< IQ <",ub,") =",
+area <- pnorm(999, mean, sd) - pnorm(x, mean, sd)
+result <- paste("P(",x,"< AC) =",
    signif(area, digits=3))
 mtext(result,3)
-axis(1, at=seq(40, 160, 20), pos=0)
+axis(1, at=seq(5, 25, 5), pos=0)
 ```
