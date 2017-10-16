@@ -16,6 +16,7 @@ Below is the data set for each of the monsters in the \textit{Monster Manual} - 
 
 ```{r, echo=FALSE}
 ac <- read.csv("data.csv", header=TRUE)
+options("scipen"=100)
 print(ac$AC, max = 999, row.names=FALSE)
 ```
 
@@ -65,26 +66,26 @@ sd = sd(ac$AC)
 
 The mean of the data is `r round(mean, 2)`, and the standard deviation is `r round(sd, 2)`.
 
+Mean:
+
+$$\frac{\Sigma x}{n}\rightarrow\frac{`r mean * length(ac$AC)`}{`r length(ac$AC)`}=`r mean`$$
+
 # 5. Z-Score Computations (Low Number)
 
-```{r}
+```{r, echo=FALSE}
 x = 10
 z = (x - mean) / sd
+percent = pnorm(z, lower.tail = FALSE)
 ```
 
 Z-Score: $$Z = \frac{x-\mu}{\delta}\rightarrow
 \frac{10-`r round(mean, 2)`}{`r round(sd, 2)`}=`r round(z, 2)`$$
 
-Percent Above: $$P(-1.43 < Z) = 0.924 = 92.4\%$$
+Percent Above: $$P(`r round(z, 2)`< Z) = `r round(percent, 3)` = `r round(percent * 100, 1)`\%$$
 
-```{r, fig.align='center'}
-x = 10
-mean = mean(ac$AC)
-sd = sd(ac$AC)
-z = (x - mean) / sd
-print(z)
-pnorm(z, lower.tail = FALSE)
+&nbsp;
 
+```{r, echo=FALSE, fig.align='center'}
 normseq <- seq(5, 25, length = 100)
 norm <- dnorm(normseq, mean, sd)
 
