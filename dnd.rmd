@@ -81,17 +81,17 @@ $$\delta = \sqrt{\frac{\Sigma{(x - \mu)}^2}{n}}\approx`r round(sd, 2)`$$
 # 5. Z-Score Computations (Low Number)
 
 ```{r, echo=FALSE}
-x = 10
-z = (x - mean) / sd
-percent = pnorm(z, lower.tail = FALSE)
+x1 = 10
+z1 = (x1 - mean) / sd
+p1 = pnorm(z1, lower.tail = FALSE)
 ```
 
-Numer: $$x = `r x`$$
+Numer: $$x = `r x1`$$
 
 Z-Score: $$Z = \frac{x-\mu}{\delta}\rightarrow
-\frac{10-`r round(mean, 2)`}{`r round(sd, 2)`}=`r round(z, 2)`$$
+\frac{10-`r round(mean, 2)`}{`r round(sd, 2)`}=`r round(z1, 2)`$$
 
-Percent Above: $$P(`r round(z, 2)`< Z) = `r round(percent, 3)` = `r round(percent * 100, 1)`\%$$
+Percent Above: $$P(`r round(z1, 2)`< Z) = `r round(p1, 3)` = `r round(p1 * 100, 1)`\%$$
 
 &nbsp;
 
@@ -102,12 +102,12 @@ norm <- dnorm(normseq, mean, sd)
 plot(normseq, norm, type="n", xlab="Armor Classes", ylab="",
   main="Normal Distribution", axes=FALSE)
 
-i <- normseq >= x
+i <- normseq >= x1
 lines(normseq, norm)
-polygon(c(x,normseq[i],999), c(0,norm[i],0), col="red")
+polygon(c(x1,normseq[i],999), c(0,norm[i],0), col="red")
 
-area <- pnorm(999, mean, sd) - pnorm(x, mean, sd)
-result <- paste("P (",x,"< AC ) =",
+area <- pnorm(999, mean, sd) - pnorm(x1, mean, sd)
+result <- paste("P (",x1,"< AC ) =",
    signif(area, digits=3))
 mtext(result,3)
 axis(1, at=seq(5, 25, 5), pos=0)
@@ -124,15 +124,11 @@ $$P(-1.43 < Z < -0.76) = P(Z < -0.76) - P(Z < -1.43)$$
 $$=  0.224 - 0.076 = 0.148 = 14.8\%$$
 
 ```{r, fig.align='center'}
-x = 10
-y = 12
-mean = mean(ac$AC)
-sd = sd(ac$AC)
-zx = (x - mean) / sd
-print(zx)
-zy = (y - mean) / sd
-print(zy)
-pnorm(zy) - pnorm(zx)
+x2 = 12
+print(z1)
+z2 = (x2 - mean) / sd
+print(z2)
+pnorm(z2) - pnorm(z1)
 
 normseq <- seq(5, 25, length = 100)
 norm <- dnorm(normseq, mean, sd)
@@ -140,12 +136,12 @@ norm <- dnorm(normseq, mean, sd)
 plot(normseq, norm, type="n", xlab="Armor Classes", ylab="",
   main="Normal Distribution", axes=FALSE)
 
-i <- normseq >= x & normseq <= y
+i <- normseq >= x1 & normseq <= x2
 lines(normseq, norm)
-polygon(c(x,normseq[i],y), c(0,norm[i],0), col="red")
+polygon(c(x1,normseq[i],x2), c(0,norm[i],0), col="red")
 
-area <- pnorm(y, mean, sd) - pnorm(x, mean, sd)
-result <- paste("P(",x,"< AC <",y,") =",
+area <- pnorm(x2, mean, sd) - pnorm(x1, mean, sd)
+result <- paste("P(",x1,"< AC <",x2,") =",
    signif(area, digits=3))
 mtext(result,3)
 axis(1, at=seq(5, 25, 5), pos=0)
