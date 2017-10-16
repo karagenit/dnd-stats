@@ -33,8 +33,21 @@ Originally I had to split the data with [this script](https://github.com/karagen
 
 ```{r}
 hist(ac$AC,
-     main="Histogram of Armor Classes",
-     xlab="Armor Class",
-     xlim=c(5,25),
-     breaks=20)
+     main = "Histogram of Armor Classes",
+     xlab = "Armor Class",
+     xlim = c(5,25),
+     breaks = 20)
 ```
+
+```{r}
+boxplot(ac$AC,
+        main="Boxplot of Armor Classes",
+        horizontal = TRUE)
+```
+
+
+
+
+
+
+
