@@ -169,9 +169,9 @@ ex = sort(ac$AC)[[count * p3]]
 ez = (ex - mean) / sd
 ```
 
-Empirical Percentage of Points Above `r x1`: $$`r round(ep1*100, 1)`\%$$
+Empirical % of Points Above `r x1`: $$`r round(ep1*100, 1)`\%$$
 
-Empirical Percentage of Points Between `r x1` & `r x2`: $$`r round(ep2*100, 1)`\%$$
+Empirical % of Points From `r x1` to `r x2`: $$`r round(ep2*100, 1)`\%$$
 
 Empirical `r p3*100`th Percentile Data Point: $$x = `r round(ex, 0)`$$
 
