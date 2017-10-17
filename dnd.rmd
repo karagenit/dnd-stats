@@ -68,11 +68,12 @@ The histogram demonstrates that the data is mostly symmetrical (as there is no o
 ```{r, echo= FALSE}
 mean = mean(ac$AC)
 sd = sd(ac$AC)
+count = length(ac$AC)
 ```
 
 Mean:
 
-$$\mu = \frac{\Sigma x}{n}\rightarrow\frac{`r mean * length(ac$AC)`}{`r length(ac$AC)`}\approx`r round(mean, 2)`$$
+$$\mu = \frac{\Sigma x}{n}\rightarrow\frac{`r mean * count`}{`r count`}\approx`r round(mean, 2)`$$
 
 Standard Deviation:
 
@@ -164,9 +165,6 @@ $$x = `r round(x3, 1)`$$
 The empirical percentage of data points above 10 is 97%. The empirical percentage of data points between 10 and 12 is 28%. The empirical 20th percentile data point is 12. 
 
 ```{r}
-mean = mean(ac$AC)
-sd = sd(ac$AC)
-count = length(ac$AC)
 sum(ac >= 10) / count
 sum(ac >= 10 & ac <= 12) / count
 x = sort(ac$AC)[[count * 0.2]]
