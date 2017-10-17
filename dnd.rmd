@@ -115,21 +115,21 @@ axis(1, at=seq(0, 30, 5), pos=0)
 
 # 6. Z-Score Computations (High Number)
 
-Number: 12
+```{r, echo=FALSE}
+x2 = 12
+z2 = (x2 - mean) / sd
+p2 = pnorm(z2) - pnorm(z1)
+```
 
-Z-Score: $$Z = \frac{x-\mu}{\delta}\rightarrow\frac{12-14.28}{2.99}\approx-0.76$$
+Number: $$`r x2`$$
+
+Z-Score: $$Z = \frac{x-\mu}{\delta}\rightarrow\frac{`r x2`-`r round(mean,2)`}{`r round(sd, 2)`}\approx`r round(z2, 2)`$$
 
 Percent Between 10 & 12:  
 $$P(-1.43 < Z < -0.76) = P(Z < -0.76) - P(Z < -1.43)$$
 $$=  0.224 - 0.076 = 0.148 = 14.8\%$$
 
-```{r, fig.align='center'}
-x2 = 12
-print(z1)
-z2 = (x2 - mean) / sd
-print(z2)
-pnorm(z2) - pnorm(z1)
-
+```{r, fig.align='center', echo=FALSE}
 plot(normseq, norm, type="n", xlab="Armor Classes", ylab="",
   main="Normal Distribution", axes=FALSE)
 
