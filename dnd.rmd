@@ -14,9 +14,10 @@ urlcolor: blue
 
 Below is the data set for each of the monsters in the *Monster Manual* - values are listed in alphabetical order by the monster's name.
 
-```{r, echo=FALSE}
+```{r, set-options, echo=FALSE}
 ac <- read.csv("data.csv", header=TRUE)
 options("scipen"=100)
+options(width = 88)
 print(ac$AC, max = 999, row.names=FALSE)
 ```
 
