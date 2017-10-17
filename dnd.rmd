@@ -162,15 +162,18 @@ $$x = `r round(x3, 1)`$$
 
 # 8. Empirical Probabilities
 
-The empirical percentage of data points above 10 is 97%. The empirical percentage of data points between 10 and 12 is 28%. The empirical 20th percentile data point is 12. 
-
-```{r}
-sum(ac >= 10) / count
-sum(ac >= 10 & ac <= 12) / count
-x = sort(ac$AC)[[count * 0.2]]
-z = (x - mean) / sd
-print(z)
+```{r, echo=FALSE}
+ep = 0.2
+ep1 = sum(ac >= 10) / count
+ep2 = sum(ac >= 10 & ac <= 12) / count
+ex = sort(ac$AC)[[count * ep]]
+ez = (ex - mean) / sd
 ```
 
+Empirical Percentage of Points Above 10: $$`r round(ep1*100, 1)`\%$$
 
+Empirical Percentage of Points Between 10 & 12: $$`r round(ep2*100, 1)`\%$$
 
+Empirical 20th Percentile Data Point: $$x = `r round(ex, 0)`$$
+
+Empirical 20th Percentile Z-Score: $$z = `r round(ez, 2)`$$
