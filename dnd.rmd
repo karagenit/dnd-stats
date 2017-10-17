@@ -148,13 +148,16 @@ axis(1, at=seq(0, 30, 5), pos=0)
 
 # 7. 20th Percentile
 
-$$P(Z < z) = 0.2$$
-$$z = -0.84$$
-$$x = z * \delta + \mu$$
-$$x = 11.8$$
-```{r}
-qnorm(0.2) * sd(ac$AC) + mean(ac$AC)
+```{r, echo=FALSE}
+p3 = 0.2
+z3 = qnorm(0.2)
+x3 = z3 * sd + mean
 ```
+
+$$P(Z < z) = `r p3`$$
+$$z = `r round(z3, 2)`$$
+$$x = z * \delta + \mu$$
+$$x = `r round(x3, 1)`$$
 
 # 8. Empirical Probabilities
 
