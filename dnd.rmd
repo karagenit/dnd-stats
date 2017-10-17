@@ -96,7 +96,7 @@ Percent Above: $$P(`r round(z1, 2)`< Z) = `r round(p1, 3)` = `r round(p1 * 100, 
 &nbsp;
 
 ```{r, echo=FALSE, fig.align='center'}
-normseq <- seq(5, 25, length = 100)
+normseq <- seq(-4, 4, length = 100) * sd + mean
 norm <- dnorm(normseq, mean, sd)
 
 plot(normseq, norm, type="n", xlab="Armor Classes", ylab="",
@@ -110,7 +110,7 @@ area <- pnorm(999, mean, sd) - pnorm(x1, mean, sd)
 result <- paste("P (",x1,"< AC ) =",
    signif(area, digits=3))
 mtext(result,3)
-axis(1, at=seq(5, 25, 5), pos=0)
+axis(1, at=seq(0, 30, 5), pos=0)
 ```
 
 # 6. Z-Score Computations (High Number)
@@ -130,9 +130,6 @@ z2 = (x2 - mean) / sd
 print(z2)
 pnorm(z2) - pnorm(z1)
 
-normseq <- seq(5, 25, length = 100)
-norm <- dnorm(normseq, mean, sd)
-
 plot(normseq, norm, type="n", xlab="Armor Classes", ylab="",
   main="Normal Distribution", axes=FALSE)
 
@@ -141,10 +138,10 @@ lines(normseq, norm)
 polygon(c(x1,normseq[i],x2), c(0,norm[i],0), col="red")
 
 area <- pnorm(x2, mean, sd) - pnorm(x1, mean, sd)
-result <- paste("P(",x1,"< AC <",x2,") =",
+result <- paste("P (",x1,"< AC <",x2,") =",
    signif(area, digits=3))
 mtext(result,3)
-axis(1, at=seq(5, 25, 5), pos=0)
+axis(1, at=seq(0, 30, 5), pos=0)
 ```
 
 # 7. 20th Percentile
