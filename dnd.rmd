@@ -89,9 +89,9 @@ p1 = pnorm(z1, lower.tail = FALSE)
 Numer: $$x = `r x1`$$
 
 Z-Score: $$Z = \frac{x-\mu}{\delta}\rightarrow
-\frac{10-`r round(mean, 2)`}{`r round(sd, 2)`}=`r round(z1, 2)`$$
+\frac{10-`r round(mean, 2)`}{`r round(sd, 2)`}\approx`r round(z1, 2)`$$
 
-Percent Above: $$P(`r round(z1, 2)`< Z) = `r round(p1, 3)` = `r round(p1 * 100, 1)`\%$$
+Percent Above: $$P(`r round(z1, 2)`< Z) \approx `r round(p1, 3)` = `r round(p1 * 100, 1)`\%$$
 
 &nbsp;
 
@@ -121,13 +121,15 @@ z2 = (x2 - mean) / sd
 p2 = pnorm(z2) - pnorm(z1)
 ```
 
-Number: $$`r x2`$$
+Number: $$x = `r x2`$$
 
 Z-Score: $$Z = \frac{x-\mu}{\delta}\rightarrow\frac{`r x2`-`r round(mean,2)`}{`r round(sd, 2)`}\approx`r round(z2, 2)`$$
 
 Percent Between 10 & 12:  
-$$P(-1.43 < Z < -0.76) = P(Z < -0.76) - P(Z < -1.43)$$
-$$=  0.224 - 0.076 = 0.148 = 14.8\%$$
+$$P(`r round(z1, 2)` < Z < `r round(z2, 2)`) = P(Z < `r round(z2, 2)`) - P(Z < `r round(z1, 2)`)$$
+$$\approx`r round(pnorm(z2),3)`-`r round(pnorm(z1),3)`= `r round(p2, 3)` = `r round(p2 * 100, 1)`\%$$
+
+&nbsp;
 
 ```{r, fig.align='center', echo=FALSE}
 plot(normseq, norm, type="n", xlab="Armor Classes", ylab="",
