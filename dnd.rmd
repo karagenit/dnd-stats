@@ -151,7 +151,7 @@ axis(1, at=seq(0, 30, 5), pos=0)
 
 ```{r, echo=FALSE}
 p3 = 0.2
-z3 = qnorm(0.2)
+z3 = qnorm(p3)
 x3 = z3 * sd + mean
 ```
 
@@ -163,17 +163,16 @@ $$x = `r round(x3, 1)`$$
 # 8. Empirical Probabilities
 
 ```{r, echo=FALSE}
-ep = 0.2
-ep1 = sum(ac >= 10) / count
-ep2 = sum(ac >= 10 & ac <= 12) / count
-ex = sort(ac$AC)[[count * ep]]
+ep1 = sum(ac >= x1) / count
+ep2 = sum(ac >= x1 & ac <= x2) / count
+ex = sort(ac$AC)[[count * p3]]
 ez = (ex - mean) / sd
 ```
 
-Empirical Percentage of Points Above 10: $$`r round(ep1*100, 1)`\%$$
+Empirical Percentage of Points Above `r x1`: $$`r round(ep1*100, 1)`\%$$
 
-Empirical Percentage of Points Between 10 & 12: $$`r round(ep2*100, 1)`\%$$
+Empirical Percentage of Points Between `r x1` & `r x2`: $$`r round(ep2*100, 1)`\%$$
 
-Empirical 20th Percentile Data Point: $$x = `r round(ex, 0)`$$
+Empirical `r p3*100`th Percentile Data Point: $$x = `r round(ex, 0)`$$
 
-Empirical 20th Percentile Z-Score: $$z = `r round(ez, 2)`$$
+Empirical `r p3*100`th Percentile Z-Score: $$z = `r round(ez, 2)`$$
