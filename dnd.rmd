@@ -65,10 +65,11 @@ The histogram demonstrates that the data is mostly symmetrical (as there is no o
 
 # 4. Center & Spread
 
-```{r, echo= FALSE}
-mean = mean(ac$AC)
-sd = sd(ac$AC)
-count = length(ac$AC)
+```{r,echo=FALSE}
+acno = ac$AC[!ac$AC %in% boxplot.stats(ac$AC)$out]
+mean = mean(acno)
+sd = sd(acno)
+count = length(acno)
 ```
 
 Mean:
