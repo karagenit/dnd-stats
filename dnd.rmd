@@ -12,7 +12,7 @@ urlcolor: blue
 
 # 1. Dataset
 
-Below is the data set for each of the monsters in the \textit{Monster Manual} - values are listed in alphabetical order by the monster's name.
+Below is the data set for each of the monsters in the *Monster Manual* - values are listed in alphabetical order by the monster's name.
 
 ```{r, echo=FALSE}
 ac <- read.csv("data.csv", header=TRUE)
@@ -26,7 +26,7 @@ I found the data online in the form of Markdown documents, one per monster, whic
 
 Results of the script can be found [on this Google Doc](https://docs.google.com/spreadsheets/d/1GczVGTTNPxHVgNRFSQclzjwKyO30wLdCg6uDStq-raQ/edit?usp=sharing), or in [this CSV file](https://github.com/karagenit/dnd-stats/blob/master/data.csv).
 
-A little about this document: I was originally planning on using LaTeX with latexpdf to generate a nice PDF report. However, I recently learned about the R statisics language, and decided to format this document with RMarkdown (the source of which can be found [here](https://github.com/karagenit/dnd-stats/blob/master/dnd.rmd)) and build it through RStudio (which uses a combination of pandoc + texlive). As such, you will see the actual R code that was used to generate graphs/analysis *inline* with the other information.
+A little about this document: I was originally planning on using LaTeX with latexpdf to generate a nice PDF report. However, I recently learned about the R statisics language, and decided to format this document with RMarkdown (the source of which can be found [here](https://github.com/karagenit/dnd-stats/blob/master/dnd.rmd)) and build it through RStudio (which uses a combination of pandoc + texlive).
 
 Originally I had to split the data with [this script](https://github.com/karagenit/csv-split/blob/master/script.rb) and then tabulate it for LaTeX with [this](https://github.com/karagenit/csv-latex-table/blob/master/script.sh), but R makes it easy to import and manipulate the data straight from CSV files.
 
