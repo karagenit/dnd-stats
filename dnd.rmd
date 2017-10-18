@@ -62,7 +62,7 @@ qqnorm(ac.stdres,
 qqline(ac.stdres)
 ```
 
-The histogram demonstrates that the data is mostly symmetrical (as there is no obvious skew) and is unimodal. The box plot demonstrates the data's symmetry through how evenly each of the data points (fences, quartiles) are placed. The NPP shows that the data is mostly normal, as all of the data points are clustered near the linear model line. 
+The histogram demonstrates that the data is mostly symmetrical (as there is no obvious skew) and is unimodal. The box plot demonstrates the data's symmetry through how evenly the median, quartiles, & fences are placed - it also suggests normality based on the size of the IQR compared to the range. The NPP shows that the data is mostly normal, as all of the data points are clustered near the linear model line. 
 
 # 4. Center & Spread
 
