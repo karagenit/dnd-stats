@@ -38,6 +38,7 @@ hist(ac$AC,
      main = "Histogram of Armor Classes",
      xlab = "Armor Class",
      xlim = c(5,25),
+     col = "blue",
      breaks = 20)
 ```
 
@@ -107,7 +108,7 @@ plot(normseq, norm, type="n", xlab="Armor Classes", ylab="",
 
 i <- normseq >= x1
 lines(normseq, norm)
-polygon(c(x1,normseq[i],999), c(0,norm[i],0), col="red")
+polygon(c(x1,normseq[i],999), c(0,norm[i],0), col="blue")
 
 area <- pnorm(999, mean, sd) - pnorm(x1, mean, sd)
 result <- paste("P (",x1,"< AC ) =",
@@ -140,7 +141,7 @@ plot(normseq, norm, type="n", xlab="Armor Classes", ylab="",
 
 i <- normseq >= x1 & normseq <= x2
 lines(normseq, norm)
-polygon(c(x1,normseq[i],x2), c(0,norm[i],0), col="red")
+polygon(c(x1,normseq[i],x2), c(0,norm[i],0), col="blue")
 
 area <- pnorm(x2, mean, sd) - pnorm(x1, mean, sd)
 result <- paste("P (",x1,"< AC <",x2,") =",
