@@ -8,7 +8,7 @@ urlcolor: blue
 
 # About
 
-*Dungeons & Dragons* is a popular role-playing tabletop game, within which players are often pitted in combat against a variety of monsters. The 5th Edition *Monster Manual* is the definitive guidebook to the monsters found in the game (it is officially published by the creators of D&D), and contains 761 such creatures. Each monster has a number of game statistics - one such is the creature's *Armor Class*, which determines how difficult it is for a player to deal damage to the monster. In this report, I've gathered and analyzed the Armor Classes of each creature in the Monster Manual. 
+*Dungeons & Dragons* is a popular role-playing tabletop game, within which players are often pitted in combat against a variety of monsters. The 5th Edition *Monster Manual* is the definitive guidebook to the monsters found in the game (it is officially published by the creators of D&D), and contains 761 such creatures. Each monster has a number of game statistics - one of which is the creature's *Armor Class*, which determines how difficult it is for a player to deal damage to the monster. In this report, I've gathered and analyzed the Armor Classes of each creature in the Monster Manual. 
 
 # 1. Dataset
 
@@ -27,9 +27,9 @@ I found the data online in the form of Markdown documents, one per monster, whic
 
 Results of the script can be found [on this Google Doc](https://docs.google.com/spreadsheets/d/1GczVGTTNPxHVgNRFSQclzjwKyO30wLdCg6uDStq-raQ/edit?usp=sharing), or in [this CSV file](https://github.com/karagenit/dnd-stats/blob/master/data.csv).
 
-A little about this document: I was originally planning on using LaTeX with latexpdf to generate a nice PDF report. However, I recently learned about the R statisics language, and decided to format this document with RMarkdown (the source of which can be found [here](https://github.com/karagenit/dnd-stats/blob/master/dnd.rmd)) and build it through RStudio (which uses a combination of pandoc + texlive).
+A little about this document: I was originally planning on using LaTeX with latexpdf to generate a nice PDF report. However, I recently learned about the R statisics language, and decided to format this document with RMarkdown (the source for this document can be found [here](https://github.com/karagenit/dnd-stats/blob/master/dnd.rmd)) and build it through RStudio (which uses a combination of pandoc + texlive).
 
-Originally I had to split the data with [this script](https://github.com/karagenit/csv-split/blob/master/script.rb) and then tabulate it for LaTeX with [this](https://github.com/karagenit/csv-latex-table/blob/master/script.sh), but R makes it easy to import and manipulate the data straight from CSV files.
+Originally I had to split the data with [this script](https://github.com/karagenit/csv-split/blob/master/script.rb) and then tabulated it for LaTeX with [this](https://github.com/karagenit/csv-latex-table/blob/master/script.sh), but R makes it easy to import and manipulate the data straight from CSV files.
 
 # 3. Data Distribution & Normality
 
