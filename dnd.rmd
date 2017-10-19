@@ -160,9 +160,9 @@ x3 = z3 * sd + mean
 ```
 
 $$P(Z < z) = `r p3`$$
-$$z = `r round(z3, 2)`$$
+$$z \approx `r round(z3, 2)`$$
 $$x = z * \delta + \mu$$
-$$x = `r round(x3, 1)`$$
+$$x \approx `r round(x3, 1)`$$
 
 # 8. Empirical Probabilities
 
@@ -173,10 +173,10 @@ ex = sort(ac$AC)[[round(count * p3)]]
 ez = (ex - mean) / sd
 ```
 
-Empirical % of Points Above `r x1`: $$`r round(ep1*100, 1)`\%$$
+Empirical % of Points Above `r x1`: $$P \approx `r round(ep1*100, 1)`\%$$
 
-Empirical % of Points From `r x1` to `r x2`: $$`r round(ep2*100, 1)`\%$$
+Empirical % of Points From `r x1` to `r x2`: $$P \approx `r round(ep2*100, 1)`\%$$
 
 Empirical `r p3*100`th Percentile Data Point: $$x = `r round(ex, 0)`$$
 
-Empirical `r p3*100`th Percentile Z-Score: $$z = `r round(ez, 2)`$$
+Empirical `r p3*100`th Percentile Z-Score: $$z \approx `r round(ez, 2)`$$
