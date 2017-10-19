@@ -169,7 +169,7 @@ $$x = `r round(x3, 1)`$$
 ```{r, echo=FALSE}
 ep1 = sum(ac$AC >= x1) / count
 ep2 = sum(ac$AC >= x1 & ac$AC <= x2) / count
-ex = sort(ac$AC)[[count * p3]]
+ex = sort(ac$AC)[[round(count * p3)]]
 ez = (ex - mean) / sd
 ```
 
